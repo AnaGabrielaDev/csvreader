@@ -8,4 +8,6 @@ const app = express();
 app.get('/student', uploader.single('file'), studentController.list);
 app.post('/student/import', uploader.single('file'), studentController.create);
 
-app.listen(3333);
+const port = process.env.PORT || 3333;
+
+app.listen(port);
