@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { excludeAllStudentsService } from "../factories/makeExcludeAllStudentsService";
 import { listAllStudentsService } from "../factories/makeListAllStudentsService";
 import { registerStudentByCsvService } from "../factories/makeRegisterStudentByCsvService";
 
@@ -28,5 +29,11 @@ export class StudentController {
       birthDate: new Date(Number(student.birthDate))
     }))
     return res.json(response);
+  }
+
+  async delete(req: Request, res: Response) {
+    await excludeAllStudentsService.execute();
+
+    res.send();
   }
 }
