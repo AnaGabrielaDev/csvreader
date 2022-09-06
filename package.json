@@ -21,7 +21,7 @@
     "test": "jest",
     "dev": "tsnd --ignore-watch node_modules --transpile-only --respawn src/main/app.ts",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "start": "npx prisma migrate deploy && node dist/main/app.js"
+    "start": "npx prisma migrate deploy && mkdir dist/infra/tmp && node dist/main/app.js"
   },
   "dependencies": {
     "@prisma/client": "4.3.1",
