@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload by csv</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <form onsubmit="sendCsv(event)">
+        <input type="file" name="file">
+        <input type="submit" value="Send">
+    </form>
+    <button onclick="deleteAllStudents()">Delete all students</button>
+    <div id="renderResults"></div>
+</body>
+</html>
