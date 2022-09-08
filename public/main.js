@@ -25,8 +25,30 @@ function getStudents() {
         console.log(response)
 
         const data = response.data;
-        renderResults.textContent = JSON.stringify(data);
-        
+        const dataToStringiFy = JSON.stringify(data);
+
+        const tableBody = document.getElementById("renderResults");
+        for (let i of data) {
+            let item = document.createElement("tr");
+
+            const nameCell = document.createElement("td");
+            nameCell.innerHTML = i.name;
+
+            const cityNameCell = document.createElement("td");
+            cityNameCell.innerHTML = i.cityName
+
+            const schoolNameCell = document.createElement("td");
+            schoolNameCell.innerHTML = i.schoolName
+
+            const classNameCell = document.createElement("td");
+            classNameCell.innerHTML = i.className
+
+            const gradeCell = document.createElement("td");
+            gradeCell.innerHTML = i.grade
+            
+            item.append(nameCell, cityNameCell, schoolNameCell, classNameCell, gradeCell);
+            tableBody.append(item);
+        }
     })
 }
 
