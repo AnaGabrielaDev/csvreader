@@ -26,7 +26,6 @@ export class StudentController {
 
     const response = students.map(student => ({
       ...student,
-      birthDate: new Date(Number(student.birthDate))
     }))
     return res.json(response);
   }

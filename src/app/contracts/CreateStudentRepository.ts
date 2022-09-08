@@ -1,6 +1,9 @@
 export interface CreateStudentRepositoryParams {
   name: string
-  birthDate: number
+  cityName: string
+  schoolName: string
+  className: string
+  grade: string
 }
 
 export interface CreateStudentRepository {

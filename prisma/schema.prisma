@@ -13,7 +13,10 @@ datasource db {
 model Student {
   id        String @id @default(uuid())
   name      String
-  birthDate BigInt
+  cityName String
+  schoolName String
+  className String
+  grade String
 
   @@map("students")
 }

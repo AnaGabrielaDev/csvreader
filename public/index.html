@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,22 @@
         <input type="submit" value="Send">
     </form>
     <button onclick="deleteAllStudents()">Delete all students</button>
-    <div id="renderResults"></div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cidade</th>
+                    <th>Escola</th>
+                    <th>Turma</th>
+                    <th>Série</th>
+                </tr>
+            </thead>
+            
+            <tbody id="renderResults">
+            </tbody>
+        </table>
+    </div>
+   
 </body>
 </html>
