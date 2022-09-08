@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { excludeAllStudentsService } from "../factories/makeExcludeAllStudentsService";
+import { getStudentByIdService } from "../factories/makeGetStudentByIdService";
 import { listAllStudentsService } from "../factories/makeListAllStudentsService";
 import { registerStudentByCsvService } from "../factories/makeRegisterStudentByCsvService";
 
@@ -34,5 +35,12 @@ export class StudentController {
     await excludeAllStudentsService.execute();
 
     res.send();
+  }
+
+  async getById(req: Request, res: Response) {
+    const id =  req.params.id;
+    const student = await getStudentByIdService.execute(id);
+
+    return res.json(student);
   }
 }

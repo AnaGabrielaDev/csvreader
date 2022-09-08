@@ -1,3 +1,4 @@
+import { Student } from "@prisma/client";
 import { CreateStudentRepository, CreateStudentRepositoryParams } from "../../../app/contracts/CreateStudentRepository";
 import { ExcludeAllStudentsRepository } from "../../../app/contracts/ExcludeAllStudentsRepository";
 import { ListStudentsRepository } from "../../../app/contracts/ListStudentsRepository";
@@ -29,5 +30,15 @@ export class PrismaStudentRepository implements CreateStudentRepository, ListStu
 
   async deleteAll() {
     await connection.student.deleteMany()
+  }
+
+  async getById(id: string): Promise<Student>{
+    const student = await connection.student.findUniqueOrThrow({
+      where: {
+        id
+      }
+    });
+
+    return student
   }
 }
