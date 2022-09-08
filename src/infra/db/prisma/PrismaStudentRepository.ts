@@ -4,11 +4,19 @@ import { ListStudentsRepository } from "../../../app/contracts/ListStudentsRepos
 import { connection } from "./connection";
 
 export class PrismaStudentRepository implements CreateStudentRepository, ListStudentsRepository, ExcludeAllStudentsRepository {
-  async create({name, birthDate}: CreateStudentRepositoryParams) {
+  async create({
+    name, 
+    cityName, 
+    schoolName,
+    className,
+    grade}: CreateStudentRepositoryParams) {
     await connection.student.create({
       data: {
         name,
-        birthDate
+        cityName, 
+        schoolName,
+        className,
+        grade
       }
     })
   }
@@ -16,7 +24,7 @@ export class PrismaStudentRepository implements CreateStudentRepository, ListStu
   async list() {
     const students = await connection.student.findMany();
 
-    return students.map((student) => ({...student, birthDate: Number(student.birthDate)}))
+    return students.map((student) => ({...student}))
   }
 
   async deleteAll() {

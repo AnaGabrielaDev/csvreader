@@ -1,5 +1,8 @@
 export interface Student {
   id: string
   name: string
-  birthDate: number
+  cityName: string
+  schoolName: string
+  className: string
+  grade: string
 }

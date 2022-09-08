@@ -10,15 +10,16 @@ export class RegisterStudentByCsvService implements RegisterStudentByCsv {
   async execute({csv}: RegisterStudentByCsvParams) {
     const dataFromCsv = await this.csvReader.readFromBuffer(csv.buffer);
 
-    const correctData = dataFromCsv.every((student: any) => student.name && student["birth date"])
+    const correctData = dataFromCsv.every((student: any) => student.name)
     if(!correctData) throw new Error("required fields is not provided");
 
     dataFromCsv.forEach(async (student: any) => {
-      const [day, month, year] = student["birth date"].split("/")
-      const formattedDateToInt = new Date(Number(year), Number(month) - 1, Number(day))
       await this.createStudentRepository.create({
         name: student.name,
-        birthDate: formattedDateToInt.getTime()
+        cityName: student.cityName,
+        schoolName: student.schoolName,
+        className: student.className,
+        grade: student.grade,
       })
     })
   };
