@@ -25,14 +25,18 @@ function getStudents() {
         console.log(response)
 
         const data = response.data;
-        const dataToStringiFy = JSON.stringify(data);
 
         const tableBody = document.getElementById("renderResults");
         for (let i of data) {
             let item = document.createElement("tr");
+            
+            const link = document.createElement("a");
+            var linkText = document.createTextNode(`${i.name}`);
+            link.appendChild(linkText);
 
-            const nameCell = document.createElement("td");
-            nameCell.innerHTML = i.name;
+            link.title = "Click here to show details";
+            link.target = "_blank";
+            link.href = `${window.location.href}student/${i.id}`;
 
             const cityNameCell = document.createElement("td");
             cityNameCell.innerHTML = i.cityName
@@ -46,7 +50,7 @@ function getStudents() {
             const gradeCell = document.createElement("td");
             gradeCell.innerHTML = i.grade
             
-            item.append(nameCell, cityNameCell, schoolNameCell, classNameCell, gradeCell);
+            item.append(link, cityNameCell, schoolNameCell, classNameCell, gradeCell);
             tableBody.append(item);
         }
     })
