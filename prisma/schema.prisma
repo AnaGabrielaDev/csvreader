@@ -11,12 +11,23 @@ datasource db {
 }
 
 model Student {
-  id        String @id @default(uuid())
-  name      String
-  cityName String
+  id         String   @id @default(uuid())
+  name       String
+  cityName   String
   schoolName String
-  className String
-  grade String
+  className  String
+  grade      String
+  Result     Result[]
 
   @@map("students")
+}
+
+model Result {
+  id        String @id @default(uuid())
+  studentId String
+  rate      Int
+
+  Student Student @relation(fields: [studentId], references: [id])
+
+  @@map("results")
 }
